@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LEVEL UP | Gaming Community</title>
+<style>
+:root {
+  --bg: #0b0b12;
+  --panel: #151522;
+  --accent: #a78bfa;
+  --text: #f5f3ff;
+  --muted: #aaa6c3;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+header {
+  padding: 20px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #29263b;
+}
+.logo { font-weight: 900; letter-spacing: 2px; }
+a { color: var(--accent); text-decoration: none; }
+nav { display: flex; gap: 20px; }
+.hero {
+  text-align: center;
+  padding: 90px 20px 65px;
+  background: radial-gradient(ellipse at top, #32245a, var(--bg) 70%);
+}
+.hero h1 { font-size: clamp(38px, 8vw, 72px); margin: 0; }
+.hero p { color: var(--muted); }
+.btn {
+  display: inline-block;
+  padding: 13px 20px;
+  border-radius: 9px;
+  background: var(--accent);
+  color: #130d22;
+  font-weight: bold;
+  margin: 12px 5px;
+}
+main { max-width: 1000px; margin: auto; padding: 30px 20px; }
+input {
+  width: 100%; padding: 14px; margin: 10px 0 20px;
+  background: var(--panel); color: white;
+  border: 1px solid #38334d; border-radius: 8px;
+}
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.game {
+  background: var(--panel); border: 1px solid #29263b;
+  border-radius: 14px; padding: 24px;
+}
+.game p { color: var(--muted); }
+footer { text-align: center; padding: 35px; color: var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">LEVEL UP</div>
+  <nav>
+    <a href="#games">Games</a>
+    <a href="#community">Community</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>YOUR GAME.<br>YOUR PEOPLE.</h1>
+  <p>Find your squad. Share your games. Level up together.</p>
+  <a class="btn" href="#games">Explore games</a>
+  <a class="btn" href="#community">Join the community</a>
+</section>
+
+<main>
+  <h2>Explore games</h2>
+  <input id="search" placeholder="Search games..."
+         aria-label="Search games">
+
+  <div class="games" id="games">
+    <article class="game">
+      <h3>Minecraft</h3>
+      <p>Build, explore and create together.</p>
+    </article>
+    <article class="game">
+      <h3>Roblox</h3>
+      <p>Discover new experiences and share favourites.</p>
+    </article>
+    <article class="game">
+      <h3>Fortnite</h3>
+      <p>Team up and talk about your latest matches.</p>
+    </article>
+  </div>
+
+  <section id="community" style="padding:45px 0">
+    <h2>Join the community</h2>
+    <p>Meet other players, share ideas and find your squad.</p>
+    <!-- Replace # with your community invite URL -->
+    <a class="btn" href="#"
+       onclick="alert('Add your community invite link first!'); return false;">
+       Join us
+    </a>
+  </section>
+</main>
+
+<footer>LEVEL UP · Made by gamers, for gamers.</footer>
+
+<script>
+const search = document.getElementById("search");
+search.addEventListener("input", () => {
+  const term = search.value.toLowerCase();
+  document.querySelectorAll(".game").forEach(card => {
+    card.hidden = !card.innerText.toLowerCase().includes(term);
+  });
+});
+</script>
+</body>
+</html>
